@@ -13,6 +13,10 @@ app.use(express.static(path.resolve(__dirname, './static')))
 
 app.post('/api/contact', require(path.resolve(__dirname, './contact.js')))
 
+app.get('/down/treedo', (req, res) =>
+    res.download(path.resolve(__dirname, './files/TreeDo.apk'), 'TreeDo.apk')
+)
+
 // catch client-side router requests
 app.get('*', (req, res) =>
     res.sendFile(path.resolve(__dirname, './static/index.html'))
